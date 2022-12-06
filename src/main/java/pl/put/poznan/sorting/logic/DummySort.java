@@ -1,6 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
-public class Test implements SortStrategy{
+/**
+ * Dummy sort implementation for testing purposes only.
+ * May be deleted after implementation of a real sorting algorithm.
+ */
+public class DummySort implements SortStrategy{
 
     @Override
     public int[] sort(int[] data) {
