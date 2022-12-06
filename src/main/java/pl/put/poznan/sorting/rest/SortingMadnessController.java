@@ -3,7 +3,8 @@ package pl.put.poznan.sorting.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.sorting.logic.SortingMadness;
+import pl.put.poznan.sorting.logic.DummySort;
+import pl.put.poznan.sorting.logic.SortContext;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,9 @@ public class SortingMadnessController {
                 logger.debug(Arrays.toString(numbers));
 
                 // perform the transformation, you should run your logic here, below is just a silly example
-                SortingMadness sorting = new SortingMadness(numbers);
-                return sorting.sort();
+                SortContext context = new SortContext(new DummySort());
+
+                return context.sort(numbers);
         }
 
         @RequestMapping(method = RequestMethod.POST, produces = "application/json")
@@ -33,8 +35,9 @@ public class SortingMadnessController {
                 logger.debug(Arrays.toString(numbers));
 
                 // perform the transformation, you should run your logic here, below is just a silly example
-                SortingMadness sorting = new SortingMadness(numbers);
-                return sorting.sort();
+                SortContext context = new SortContext(new DummySort());
+
+                return context.sort(numbers);
         }
 
 
