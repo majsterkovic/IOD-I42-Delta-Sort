@@ -17,7 +17,7 @@ class BubbleSortTest {
     @BeforeAll
     static void setUp() {
         sortContext = new SortContext(new BubbleSort());
-        N = 10000;
+        N = 1000;
     }
 
 
@@ -80,12 +80,12 @@ class BubbleSortTest {
     @Test
     void sortStrings_Same() {
 
-            String[] data = new String[10];
-            Arrays.fill(data, "aaa");
-            String[] expected = data.clone();
-            Arrays.sort(expected);
+        String[] data = new String[10];
+        Arrays.fill(data, "aaa");
+        String[] expected = data.clone();
+        Arrays.sort(expected);
 
-            assertArrayEquals(expected, sortContext.sort(data));
+        assertArrayEquals(expected, sortContext.sort(data));
     }
 
     private String randomString(int targetStringLength) {
@@ -102,29 +102,29 @@ class BubbleSortTest {
     @Test
     void sortString_Random() {
 
-            String[] data = new String[N];
-            for (int i = 0; i < N; i++) {
-                data[i] = randomString(10);
-            }
-            String[] expected = data.clone();
-            Arrays.sort(expected);
+        String[] data = new String[N];
+        for (int i = 0; i < N; i++) {
+            data[i] = randomString(10);
+        }
+        String[] expected = data.clone();
+        Arrays.sort(expected);
 
-            assertArrayEquals(expected, sortContext.sort(data));
+        assertArrayEquals(expected, sortContext.sort(data));
     }
 
     @Test
     void sortString_Sorted() {
 
-            String[] data = new String[N];
-            for (int i = 0; i < N; i++) {
-                data[i] = randomString(10);
-            }
-            String[] expected = data.clone();
-            Arrays.sort(expected);
+        String[] data = new String[N];
+        for (int i = 0; i < N; i++) {
+            data[i] = randomString(10);
+        }
+        String[] expected = data.clone();
+        Arrays.sort(expected);
 
-            Arrays.sort(data);
+        Arrays.sort(data);
 
-            assertArrayEquals(expected, sortContext.sort(data));
+        assertArrayEquals(expected, sortContext.sort(data));
     }
 
     @Test
