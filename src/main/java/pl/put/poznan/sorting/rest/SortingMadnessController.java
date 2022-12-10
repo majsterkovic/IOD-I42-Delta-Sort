@@ -9,35 +9,53 @@ import pl.put.poznan.sorting.logic.SortContext;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/{method}/{order}")
+@RequestMapping("/")
 public class SortingMadnessController {
 
         private static final Logger logger = LoggerFactory.getLogger(SortingMadnessController.class);
 
-        @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-        public String [] get(@PathVariable String method, @PathVariable String order, @RequestParam(value="numbers") String[] numbers) {
+        /** sample request
 
-                // log the parameters
-                logger.debug(Arrays.toString(numbers));
+        GET localhost:8080/
+        Content-Type: application/json
+        Accept: application/json
 
-                // perform the transformation, you should run your logic here, below is just a silly example
-                SortContext context = new SortContext(new DummySort());
+         {
+                 "data": [1, 3, 2, 5, 4],
+                 "algorithms": "bubble, insertion, selection",
+                 "direction": "asc"
+         }
 
-                return context.sort(numbers);
+        */
+
+
+        @RequestMapping(method = RequestMethod.GET, consumes =  "application/json", produces = "application/json")
+        public Map<String, Object> get(@RequestBody Map<String, Object> requestData) {
+
+                System.out.println("requestData: " + requestData.toString());
+
+                String[] algorithms;
+                String direction = "asc";
+
+                // TODO: get data from request, it may be strings or numbers or objects, get objects from JSON
+
+                algorithms = requestData.get("algorithms").toString().split(",");
+
+                if (requestData.containsKey("direction")) {
+                        direction = requestData.get("direction").toString();
+                }
+
+                // TODO: sort
+                return requestData;
         }
 
-        @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-        public String [] post(@PathVariable String method, @PathVariable String order, @RequestBody String[] numbers) {
+        @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+        void post(@RequestBody Map<String, Object> data) {
 
-                // log the parameters
-                logger.debug(Arrays.toString(numbers));
-
-                // perform the transformation, you should run your logic here, below is just a silly example
-                SortContext context = new SortContext(new DummySort());
-
-                return context.sort(numbers);
+                // TODO: implement POST
         }
 
 
