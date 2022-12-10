@@ -7,26 +7,14 @@ package pl.put.poznan.sorting.logic;
 public class BubbleSort implements SortStrategy {
 
     @Override
-    public int[] sort(int[] data) {
-        int temp;
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 1; j < (data.length - i); j++) {
-                if (data[j - 1] > data[j]) {
-                    temp = data[j - 1];
-                    data[j - 1] = data[j];
-                    data[j] = temp;
-                }
-            }
-        }
-        return data;
-    }
+    public Object[] sort(Object[] data) {
 
-    @Override
-    public String[] sort(String[] data) {
-        String temp;
+        PrimitiveComparator comp = new PrimitiveComparator();
+
+        Object temp;
         for (int i = 0; i < data.length; i++) {
             for (int j = 1; j < (data.length - i); j++) {
-                if (data[j - 1].compareTo(data[j]) > 0) {
+                if (comp.compareTo(data[j - 1], (data[j])) > 0) {
                     temp = data[j - 1];
                     data[j - 1] = data[j];
                     data[j] = temp;
