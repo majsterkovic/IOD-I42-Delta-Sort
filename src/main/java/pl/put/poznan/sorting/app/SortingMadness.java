@@ -23,13 +23,13 @@ public class SortingMadness {
     private final static SortingWrapper wrapper = new SortingWrapper();
 
 
-    public SortingMadness(String data, String[] algorithms, String direction, int iterations) {
+    public SortingMadness(Object[] data, String[] algorithms, String direction, int iterations) {
 
         this.algorithms = algorithms;
         this.direction = direction;
         this.iterations = iterations;
         this.key = null;
-        this.input = convertData(data);
+        this.input = data;
     }
 
     public SortingMadness(JSONArray data, String[] algorithms, String direction, int iterations, String key) {
