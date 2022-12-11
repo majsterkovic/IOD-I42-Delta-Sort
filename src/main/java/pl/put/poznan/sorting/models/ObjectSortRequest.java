@@ -19,8 +19,8 @@ public class ObjectSortRequest {
     public final boolean reverse;
     public final int iterations;
     
-    public static SortRequest fromJson(String json) throws JsonSyntaxException {
-        return new Gson().fromJson(json, SortRequest.class);
+    public static ObjectSortRequest fromJson(String json) throws JsonSyntaxException {
+        return new Gson().fromJson(json, ObjectSortRequest.class);
     }
 
     public String toJson() {

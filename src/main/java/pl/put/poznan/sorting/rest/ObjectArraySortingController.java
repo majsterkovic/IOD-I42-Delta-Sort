@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.JsonSyntaxException;
 
 import pl.put.poznan.sorting.app.SortingMadness;
-import pl.put.poznan.sorting.models.SortRequest;
+import pl.put.poznan.sorting.models.ObjectSortRequest;
 import pl.put.poznan.sorting.models.SortResult;
 
 import java.util.Map;
@@ -29,9 +29,9 @@ public class ObjectArraySortingController {
 
         logger.info("Received new request object.");
 
-        SortRequest request;
+        ObjectSortRequest request;
         try {
-            request = SortRequest.fromJson(requestData.toString());
+            request = ObjectSortRequest.fromJson(requestData.toString());
         } catch (JsonSyntaxException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
@@ -48,7 +48,7 @@ public class ObjectArraySortingController {
 
         logger.debug("Initializing sorter.");
 
-        SortingMadness madness = new SortingMadness(request.data, request.algorithms, "key", request.reverse, request.iterations);
+        SortingMadness madness = new SortingMadness(request.data, request.algorithms, request.key, request.reverse, request.iterations);
         SortResult[] result = madness.getResult();
         
         return ResponseEntity.ok(result);
