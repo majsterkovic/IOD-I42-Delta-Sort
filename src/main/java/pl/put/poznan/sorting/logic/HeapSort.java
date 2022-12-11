@@ -7,9 +7,9 @@ package pl.put.poznan.sorting.logic;
 
 public class HeapSort implements SortStrategy {
 
-    void heapify(Object[] array, int n, int i) {
+    void heapify(Object[] array, int n, int i, String sortKey) {
 
-        PrimitiveComparator comp = new PrimitiveComparator();
+        Comparator comp = new Comparator(sortKey);
 
         int largest = i;
         int left = 2 * i + 1;
@@ -28,24 +28,24 @@ public class HeapSort implements SortStrategy {
             array[i] = array[largest];
             array[largest] = swap;
 
-            heapify(array, n, largest);
+            heapify(array, n, largest, sortKey);
         }
     }
 
 
     @Override
-    public Object[] sort(Object[] data) {
+    public Object[] sort(Object[] data, String sortKey) {
         int n = data.length;
 
         for (int i = n / 2 - 1; i >= 0; i--)
-            heapify(data, n, i);
+            heapify(data, n, i, sortKey);
 
         for (int i = n - 1; i >= 0; i--) {
             Object temp = data[0];
             data[0] = data[i];
             data[i] = temp;
 
-            heapify(data, i, 0);
+            heapify(data, i, 0, sortKey);
         }
         return data;
     }

@@ -7,9 +7,10 @@ package pl.put.poznan.sorting.logic;
 public class BubbleSort implements SortStrategy {
 
     @Override
-    public Object[] sort(Object[] data) {
+    public Object[] sort(Object[] data, String sortKey) {
 
-        PrimitiveComparator comp = new PrimitiveComparator();
+        Comparator comp = new Comparator(sortKey);
+
 
         Object temp;
         for (int i = 0; i < data.length; i++) {
@@ -21,6 +22,7 @@ public class BubbleSort implements SortStrategy {
                 }
             }
         }
+
         return data;
     }
 }

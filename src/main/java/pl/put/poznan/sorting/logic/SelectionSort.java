@@ -7,8 +7,8 @@ package pl.put.poznan.sorting.logic;
 public class SelectionSort implements SortStrategy {
 
     @Override
-    public Object[] sort(Object[] data) {
-        PrimitiveComparator comp = new PrimitiveComparator();
+    public Object[] sort(Object[] data, String sortKey) {
+        Comparator comp = new Comparator(sortKey);
         for (int i = 0; i < data.length - 1; i++) {
             int jMin = i;
 

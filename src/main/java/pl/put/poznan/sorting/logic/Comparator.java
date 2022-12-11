@@ -1,6 +1,14 @@
 package pl.put.poznan.sorting.logic;
 
-public class PrimitiveComparator {
+import org.json.JSONObject;
+
+public class Comparator {
+
+    private final String key;
+
+    Comparator(String key) {
+        this.key = key;
+    }
 
     public int compareTo(Object a, Object b) {
         if (a instanceof Integer) {
@@ -11,6 +19,11 @@ public class PrimitiveComparator {
         }
         else if (a instanceof String) {
             return ((String) a).compareTo((String) b);
+        }
+        else if (a instanceof JSONObject) {
+            a =  ((JSONObject) a).get(key);
+            b =  ((JSONObject) b).get(key);
+            return this.compareTo(a, b);
         }
         else {
             return 0;
