@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import pl.put.poznan.sorting.logic.SortContext;
 import pl.put.poznan.sorting.logic.SortingWrapper;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,10 +55,11 @@ public class SortingMadness {
     public Object[] convertData(String data) {
 
         String[] input = data.split(",");
-        // remove [ ] from the first and last element
+        // remove [ ] from the first and last element if present
 
-        input[0] = input[0].substring(1);
-        input[input.length - 1] = input[input.length - 1].substring(0, input[input.length - 1].length() - 1);
+        input[0] = input[0].replace("[", "");
+        input[input.length - 1] = input[input.length - 1].replace("]", "");
+
 
         for (int i = 0; i < input.length; i++) {
             input[i] = input[i].trim();
@@ -67,6 +69,7 @@ public class SortingMadness {
 
         // If input is string
         System.out.println(data);
+        System.out.println(Arrays.toString(input));
 
         if (data.matches(".*[a-z|A-Z]+.*")) {
             in = input;

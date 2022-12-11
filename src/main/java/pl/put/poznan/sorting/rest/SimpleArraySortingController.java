@@ -2,10 +2,7 @@ package pl.put.poznan.sorting.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.sorting.app.SortingMadness;
 
 import java.security.InvalidParameterException;
@@ -18,23 +15,8 @@ public class SimpleArraySortingController {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleArraySortingController.class);
 
-    /**
-     * sample request
-     * <p>
-     * GET localhost:8080/
-     * Content-Type: application/json
-     * Accept: application/json
-     * <p>
-     * {
-     * "data": [1, 3, 2, 5, 4],
-     * "algorithm": "bubble, insertion, selection",
-     * "direction": "asc"
-     * }
-     */
-
-
-    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public Map<String, Object> get(@RequestBody Map<String, Object> requestData)
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public Map<String, Object> post(@RequestBody Map<String, Object> requestData)
             throws InvalidParameterException {
 
         logger.info("Received new request.");
@@ -74,10 +56,18 @@ public class SimpleArraySortingController {
         return result;
     }
 
-    @RequestMapping(method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    void post(@RequestBody Map<String, Object> data) {
+    @GetMapping(value = "/{algorithms}/{direction}/{iterations}", consumes = "application/json", produces = "application/json")
+    public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
+                                   @PathVariable("direction") String direction,
+                                   @PathVariable("iterations") int iterations,
+                                   @RequestParam("data") String data) {
 
-        // TODO: implement
+        System.out.println("Received new request.");
+        SortingMadness madness = new SortingMadness(data, algorithms, direction, iterations);
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", madness.getResult());
+        return result;
     }
+
 
 }
