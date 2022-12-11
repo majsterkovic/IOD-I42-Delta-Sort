@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.*;
+import pl.put.poznan.sorting.logic.Timer;
 
 public class SortingMadness {
 
@@ -89,7 +90,14 @@ public class SortingMadness {
 
             algorithm = algorithm.trim();
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
+
+            Timer timer = new Timer();
+            timer.startMeasure();
+
             result = context.sort(input, key);
+
+            timer.stopMeasure();
+            String executionTime = timer.getElapsedTime("s");
 
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
