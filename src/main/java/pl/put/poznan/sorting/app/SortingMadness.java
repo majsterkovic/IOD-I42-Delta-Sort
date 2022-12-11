@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import pl.put.poznan.sorting.logic.SortContext;
 import pl.put.poznan.sorting.logic.SortingWrapper;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,18 +47,15 @@ public class SortingMadness {
             JSONObject object = data.getJSONObject(i);
             in[i] = object;
         }
-
         return in;
     }
 
     public Object[] convertData(String data) {
 
         String[] input = data.split(",");
-        // remove [ ] from the first and last element if present
 
         input[0] = input[0].replace("[", "");
         input[input.length - 1] = input[input.length - 1].replace("]", "");
-
 
         for (int i = 0; i < input.length; i++) {
             input[i] = input[i].trim();
@@ -67,18 +63,14 @@ public class SortingMadness {
 
         Object[] in = new Object[input.length];
 
-        // If input is string
-        System.out.println(data);
-        System.out.println(Arrays.toString(input));
-
         if (data.matches(".*[a-z|A-Z]+.*")) {
             in = input;
         }
-        // If input is Float
+
         else if (data.contains(".")) {
             for (int i = 0; i < input.length; i++) in[i] = Float.parseFloat(input[i]);
         }
-        // If input is Integer
+
         else {
             for (int i = 0; i < input.length; i++) in[i] = Integer.parseInt(input[i]);
         }
@@ -90,23 +82,27 @@ public class SortingMadness {
 
         Map<String, Object> results = new HashMap<>();
         Object[] result;
+
+        boolean reverse = direction.equals("desc");
+
         for (String algorithm : algorithms) {
+
             algorithm = algorithm.trim();
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
             result = context.sort(input, key);
 
             ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
             for (int i = 0; i < result.length; i++) {
                 try {
                     result[i] = mapper.readValue(result[i].toString(), Object.class);
                 } catch (JsonProcessingException e) {
-                    e.printStackTrace();
+                    // pass
                 }
             }
             results.put(algorithm, result);
 
         }
-
         return results;
     }
 }
