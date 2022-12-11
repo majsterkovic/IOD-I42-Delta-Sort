@@ -34,7 +34,7 @@ public class HeapSort implements SortStrategy {
 
 
     @Override
-    public Object[] sort(Object[] data, String sortKey) {
+    public Object[] sort(Object[] data, String sortKey, int iterations) {
         int n = data.length;
 
         for (int i = n / 2 - 1; i >= 0; i--)

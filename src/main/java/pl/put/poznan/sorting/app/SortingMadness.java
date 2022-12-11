@@ -93,7 +93,7 @@ public class SortingMadness {
         for (String algorithm : algorithms) {
             algorithm = algorithm.trim();
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
-            result = context.sort(input, key);
+            result = context.sort(input, key, iterations);
 
             ObjectMapper mapper = new ObjectMapper();
             for (int i = 0; i < result.length; i++) {
