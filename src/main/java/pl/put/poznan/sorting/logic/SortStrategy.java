@@ -1,12 +1,12 @@
 package pl.put.poznan.sorting.logic;
 
+import java.util.ArrayList;
+
 /**
  * Sorting strategy.
  */
 public interface SortStrategy {
 
-    public int[] sort(int[] data);
-
-    public String[] sort(String[] data);
+    public Object[] sort(Object[] input, String key);
 
 }
