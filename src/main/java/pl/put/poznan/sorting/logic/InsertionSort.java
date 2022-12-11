@@ -3,7 +3,8 @@ package pl.put.poznan.sorting.logic;
 public class InsertionSort implements SortStrategy {
 
     @Override
-    public Object[] sort(Object[] data, String sortKey) {
+    public Object[] sort(Object[] data, String sortKey, int iterations) {
+        int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
         int n = data.length;
         for (int i = 1; i < n; i++) {
@@ -14,7 +15,17 @@ public class InsertionSort implements SortStrategy {
                 j = j -1;
             }
             data[j+1] = key;
+
+            actualIteration++;
+            if (actualIteration >= iterations) {
+                break;
+            }
         }
         return data;
+    }
+
+    @Override
+    public String getName() {
+        return "InsertionSort";
     }
 }

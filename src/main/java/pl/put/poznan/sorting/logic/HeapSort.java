@@ -49,4 +49,9 @@ public class HeapSort implements SortStrategy {
         }
         return data;
     }
+
+    @Override
+    public String getName() {
+        return "HeapSort";
+    }
 }

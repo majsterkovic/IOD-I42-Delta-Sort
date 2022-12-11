@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public interface SortStrategy {
 
-    public Object[] sort(Object[] input, String key);
+    public Object[] sort(Object[] input, String key, int iterations);
+
+    public String getName();
 
 }

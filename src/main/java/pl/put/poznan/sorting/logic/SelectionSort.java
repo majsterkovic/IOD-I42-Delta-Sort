@@ -7,7 +7,8 @@ package pl.put.poznan.sorting.logic;
 public class SelectionSort implements SortStrategy {
 
     @Override
-    public Object[] sort(Object[] data, String sortKey) {
+    public Object[] sort(Object[] data, String sortKey, int iterations) {
+        int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
         for (int i = 0; i < data.length - 1; i++) {
             int jMin = i;
@@ -23,8 +24,18 @@ public class SelectionSort implements SortStrategy {
                 data[i] = data[jMin];
                 data[jMin] = temp;
             }
+
+            actualIteration++;
+            if (actualIteration >= iterations) {
+                break;
+            }
         }
 
         return data;
+    }
+
+    @Override
+    public String getName() {
+        return "SelectionSort";
     }
 }
