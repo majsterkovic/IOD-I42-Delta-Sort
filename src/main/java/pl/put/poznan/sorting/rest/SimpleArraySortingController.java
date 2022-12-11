@@ -10,8 +10,8 @@ import com.google.gson.JsonSyntaxException;
 
 import pl.put.poznan.sorting.app.SortingMadness;
 import pl.put.poznan.sorting.models.SortRequest;
+import pl.put.poznan.sorting.models.SortResult;
 
-import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,14 +22,9 @@ public class SimpleArraySortingController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleArraySortingController.class);
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> post(@RequestBody Map<String, Object> requestData)
-            throws InvalidParameterException {
+    public ResponseEntity<Object> post(@RequestBody Map<String, Object> requestData) {
 
         logger.info("Received new request.");
-
-        String direction = "asc";
-
-        logger.debug("Initializing sorter.");
 
         SortRequest request;
         try {
@@ -48,23 +43,22 @@ public class SimpleArraySortingController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
         }
 
-        SortingMadness madness = new SortingMadness(
-            request.data, request.algorithms, direction, request.iterations
-        );
+        logger.debug("Initializing sorter.");
 
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("result", madness.getResult());
+        SortingMadness madness = new SortingMadness( request.data, request.algorithms, request.reverse, request.iterations);
+        SortResult[] result = madness.getResult();
+
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/{algorithms}/{direction}/{iterations}", consumes = "application/json", produces = "application/json")
     public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
-                                   @PathVariable("direction") String direction,
+                                   @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
-                                   @RequestParam("data") String data) {
+                                   @RequestParam("data") Object[] data) {
 
         System.out.println("Received new request.");
-        SortingMadness madness = new SortingMadness(data, algorithms, direction, iterations);
+        SortingMadness madness = new SortingMadness(data, algorithms, reverse, iterations);
         Map<String, Object> result = new HashMap<>();
         result.put("result", madness.getResult());
         return result;
