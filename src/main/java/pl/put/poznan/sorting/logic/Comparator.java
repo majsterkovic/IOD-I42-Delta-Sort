@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class Comparator {
 
-    private final String key;
+    private String key;
 
     Comparator(String key) {
         this.key = key;
@@ -21,6 +21,9 @@ public class Comparator {
             return ((String) a).compareTo((String) b);
         }
         else if (a instanceof JSONObject) {
+            if (key == null) {
+                key = ((JSONObject) a).names().getString(0);
+            }
             a =  ((JSONObject) a).get(key);
             b =  ((JSONObject) b).get(key);
             return this.compareTo(a, b);

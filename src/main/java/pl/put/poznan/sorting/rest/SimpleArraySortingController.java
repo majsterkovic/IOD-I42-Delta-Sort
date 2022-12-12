@@ -2,10 +2,16 @@ package pl.put.poznan.sorting.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.sorting.app.SortingMadness;
 
-import java.security.InvalidParameterException;
+import com.google.gson.JsonSyntaxException;
+
+import pl.put.poznan.sorting.app.SortingMadness;
+import pl.put.poznan.sorting.models.SortRequest;
+import pl.put.poznan.sorting.models.SortResult;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,54 +22,43 @@ public class SimpleArraySortingController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleArraySortingController.class);
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public Map<String, Object> post(@RequestBody Map<String, Object> requestData)
-            throws InvalidParameterException {
+    public ResponseEntity<Object> post(@RequestBody Map<String, Object> requestData) {
 
         logger.info("Received new request.");
 
-        String data;
-        String[] algorithms;
-        int iterations = 0;
-        String direction = "asc";
+        SortRequest request;
+        try {
+            request = SortRequest.fromJson(requestData.toString());
+        } catch (JsonSyntaxException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        if (request.data == null || request.data.length == 0) {
+            logger.error("No data provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No data provided.");
+        }
+
+        if (request.algorithms == null || request.algorithms.length == 0) {
+            logger.error("No algorithm provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
+        }
 
         logger.debug("Initializing sorter.");
 
-        if (!requestData.containsKey("algorithms")) {
-            logger.error("No algorithm provided.");
-            throw new InvalidParameterException("No algorithm provided.");
-        } else {
-            algorithms = requestData.get("algorithms").toString().split(",");
-        }
+        SortingMadness madness = new SortingMadness( request.data, request.algorithms, request.reverse, request.iterations);
+        SortResult[] result = madness.getResult();
 
-        if (requestData.containsKey("direction")) {
-            direction = requestData.get("direction").toString();
-        }
-
-        if (requestData.containsKey("iterations")) {
-            iterations = Integer.parseInt(requestData.get("iterations").toString());
-        }
-
-        if (!requestData.containsKey("data")) {
-            logger.error("No data provided.");
-            throw new InvalidParameterException("No data provided.");
-        } else {
-            data = requestData.get("data").toString();
-        }
-
-        SortingMadness madness = new SortingMadness(data, algorithms, direction, iterations);
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("result", madness.getResult());
-        return result;
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/{algorithms}/{direction}/{iterations}", consumes = "application/json", produces = "application/json")
     public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
-                                   @PathVariable("direction") String direction,
+                                   @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
-                                   @RequestParam("data") String data) {
+                                   @RequestParam("data") Object[] data) {
 
         System.out.println("Received new request.");
-        SortingMadness madness = new SortingMadness(data, algorithms, direction, iterations);
+        SortingMadness madness = new SortingMadness(data, algorithms, reverse, iterations);
         Map<String, Object> result = new HashMap<>();
         result.put("result", madness.getResult());
         return result;
