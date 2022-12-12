@@ -1,12 +1,12 @@
 package pl.put.poznan.sorting.app;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import pl.put.poznan.sorting.logic.SortContext;
 import pl.put.poznan.sorting.logic.SortingWrapper;
 import pl.put.poznan.sorting.models.SortResult;
 
 import java.util.ArrayList;
+
+import pl.put.poznan.sorting.logic.Timer;
 
 public class SortingMadness {
 
@@ -43,10 +43,14 @@ public class SortingMadness {
 
         for (String algorithm : algorithms) {
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
+            Timer timer = new Timer();
 
+            timer.startMeasure();
             Object[] sortedData = context.sort(input, key);
-            int time = 0;
+            timer.stopMeasure();
 
+            String time = timer.getElapsedTime("s");
+            
             results.add(new SortResult(algorithm, time, sortedData));
 
         }

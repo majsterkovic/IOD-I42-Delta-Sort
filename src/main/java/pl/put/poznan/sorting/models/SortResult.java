@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 
 public class SortResult {
 
-    public SortResult(String algorithm, int time, Object[] data) {
+    public SortResult(String algorithm, String time, Object[] data) {
         this.algorithm = algorithm;
         this.time = time;
         this.data = data;
@@ -19,7 +19,7 @@ public class SortResult {
     }
 
     public final String algorithm;
-    public final int time;
+    public final String time;
     public final Object[] data;
 
 }
