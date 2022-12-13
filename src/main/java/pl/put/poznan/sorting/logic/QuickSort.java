@@ -4,9 +4,9 @@ public class QuickSort implements SortStrategy
 {
 
 
-    int partition(Object[] data, int low, int high)
+    int partition(Object[] data, int low, int high, Comparator comp)
     {
-        int pivot = data[high];
+        Object pivot = data[high];
         int i = (low-1);
         for (int j=low; j<high; j++)
         {
@@ -35,16 +35,17 @@ public class QuickSort implements SortStrategy
         if (low < high)
         {
 
-            int pi = partition(data, low, high);
+            int pi = partition(data, low, high, comp);
 
-            quickSorting(data, low, pi-1);
-            quickSorting(data, pi+1, high);
+            quickSorting(data, low, pi-1, sortKey);
+            quickSorting(data, pi+1, high, sortKey);
         }
     }
 
     @Override
     public Object[] sort(Object[] data, String sortKey) {
-        quickSorting(data, 0, data.length, String sortKey);
+        int temp = data.length;
+        quickSorting(data, 0, temp, sortKey);
 
         return data;
     }
