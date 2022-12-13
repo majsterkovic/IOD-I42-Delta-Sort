@@ -38,6 +38,13 @@ public class SimpleArraySortingController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No data provided.");
         }
 
+        for (Object value : request.data) {
+            if (value.getClass() != request.data[0].getClass()) {
+                logger.error("Data have different types.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data have different types.");
+            }
+        }
+
         if (request.algorithms == null || request.algorithms.length == 0) {
             logger.error("No algorithm provided.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
@@ -45,13 +52,13 @@ public class SimpleArraySortingController {
 
         logger.debug("Initializing sorter.");
 
-        SortingMadness madness = new SortingMadness( request.data, request.algorithms, request.reverse, request.iterations);
+        SortingMadness madness = new SortingMadness(request.data, request.algorithms, request.reverse, request.iterations);
         SortResult[] result = madness.getResult();
 
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/{algorithms}/{direction}/{iterations}", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", consumes = "application/json", produces = "application/json")
     public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
                                    @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
@@ -63,6 +70,5 @@ public class SimpleArraySortingController {
         result.put("result", madness.getResult());
         return result;
     }
-
 
 }
