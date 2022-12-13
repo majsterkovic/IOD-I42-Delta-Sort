@@ -1,5 +1,6 @@
 package pl.put.poznan.sorting.logic;
 
+
 /**
  * Bubble sort implementation.
  */
@@ -7,16 +8,18 @@ package pl.put.poznan.sorting.logic;
 public class BubbleSort implements SortStrategy {
 
     @Override
-    public Object[] sort(Object[] data, String sortKey, int iterations) {
 
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean ascending) {
         int actualIteration = 0;
-
         Comparator comp = new Comparator(sortKey);
+        int directionSwitch = ascending ? 1 : -1;
 
         Object temp;
         for (int i = 0; i < data.length; i++) {
             for (int j = 1; j < (data.length - i); j++) {
-                if (comp.compareTo(data[j - 1], (data[j])) > 0) {
+
+                if (directionSwitch * comp.compareTo(data[j - 1], (data[j])) > 0)
+                {
                     temp = data[j - 1];
                     data[j - 1] = data[j];
                     data[j] = temp;
