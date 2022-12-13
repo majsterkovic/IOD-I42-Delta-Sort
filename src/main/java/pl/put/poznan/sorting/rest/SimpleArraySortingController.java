@@ -51,7 +51,7 @@ public class SimpleArraySortingController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/{algorithms}/{direction}/{iterations}", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", consumes = "application/json", produces = "application/json")
     public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
                                    @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
