@@ -25,7 +25,7 @@ public class ObjectArraySortingController {
     private static final Logger logger = LoggerFactory.getLogger(ObjectArraySortingController.class);
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> get(@RequestBody Map<String, Object> requestData) {
+    public ResponseEntity<Object> post(@RequestBody Map<String, Object> requestData) {
 
         logger.info("Received new request object.");
 
