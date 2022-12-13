@@ -8,6 +8,7 @@ class SortingApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
