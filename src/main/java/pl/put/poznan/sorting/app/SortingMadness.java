@@ -43,7 +43,7 @@ public class SortingMadness {
 
         for (String algorithm : algorithms) {
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
-
+            Timer timer = new Timer();
             timer.startMeasure();
             Object[] sortedData = context.sort(input, key, iterations);
             timer.stopMeasure();
