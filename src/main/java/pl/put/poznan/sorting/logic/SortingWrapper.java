@@ -8,6 +8,7 @@ public class SortingWrapper {
         if (type.equals("heap")) return new HeapSort();
         if (type.equals("insertion")) return new InsertionSort();
         if (type.equals("selection")) return new SelectionSort();
+        if (type.equals("quick")) return new QuickSort();
 
         return null;
     }
