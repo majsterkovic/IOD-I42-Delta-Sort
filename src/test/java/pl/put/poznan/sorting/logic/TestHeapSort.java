@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class TestBubbleSort
+class TestHeapSort
 {
 
     private SortContext context;
@@ -16,7 +16,7 @@ class TestBubbleSort
     @BeforeEach
     void setUp()
     {
-        context = new SortContext(new SortingWrapper().getSorter("bubble"));
+        context = new SortContext(new SortingWrapper().getSorter("heap"));
     }
 
     @Test
