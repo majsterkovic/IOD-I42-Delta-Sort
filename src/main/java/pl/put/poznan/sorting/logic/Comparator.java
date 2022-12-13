@@ -1,6 +1,6 @@
 package pl.put.poznan.sorting.logic;
 
-import org.json.JSONObject;
+import com.google.gson.internal.LinkedTreeMap;
 
 public class Comparator {
 
@@ -15,7 +15,7 @@ public class Comparator {
         if (a instanceof Integer) {
             return ((Integer) a).compareTo((Integer) b);
         }
-        if (a instanceof Long) {
+        else if (a instanceof Long) {
             return ((Long) a).compareTo((Long) b);
         }
         else if (a instanceof Float) {
@@ -27,12 +27,12 @@ public class Comparator {
         else if (a instanceof String) {
             return ((String) a).compareTo((String) b);
         }
-        else if (a instanceof JSONObject) {
+        else if (a instanceof LinkedTreeMap) {
             if (key == null) {
-                key = ((JSONObject) a).names().getString(0);
+                key = (String) ((LinkedTreeMap<?,?>) a).keySet().toArray()[0];
             }
-            a =  ((JSONObject) a).get(key);
-            b =  ((JSONObject) b).get(key);
+            a =  ((LinkedTreeMap<?,?>) a).get(key);
+            b =  ((LinkedTreeMap<?,?>) b).get(key);
             return this.compareTo(a, b);
         }
         else {
