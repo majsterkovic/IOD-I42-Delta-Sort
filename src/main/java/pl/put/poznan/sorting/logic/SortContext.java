@@ -8,8 +8,8 @@ public class SortContext {
         this.strategy = strategy;
     }
 
-    public Object[] sort(Object[] data, String sortKey) {
-        return strategy.sort(data, sortKey);
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
+        return strategy.sort(data, sortKey, iterations, reverse);
     }
 
 }

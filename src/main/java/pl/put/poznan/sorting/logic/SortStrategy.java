@@ -5,6 +5,8 @@ package pl.put.poznan.sorting.logic;
  */
 public interface SortStrategy {
 
-    public Object[] sort(Object[] input, String key);
+    Object[] sort(Object[] input, String key, int iterations, boolean ascending);
+
+    String getName();
 
 }
