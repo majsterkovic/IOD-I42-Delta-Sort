@@ -11,10 +11,19 @@ public class Comparator {
     }
 
     public int compareTo(Object a, Object b) {
-        if (a instanceof Double) {
+
+        if (a instanceof Integer) {
+            return ((Integer) a).compareTo((Integer) b);
+        }
+        else if (a instanceof Long) {
+            return ((Long) a).compareTo((Long) b);
+        }
+        else if (a instanceof Float) {
+            return ((Float) a).compareTo((Float) b);
+        }
+        else if (a instanceof Double) {
             return ((Double) a).compareTo((Double) b);
         }
-
         else if (a instanceof String) {
             return ((String) a).compareTo((String) b);
         }
