@@ -1,6 +1,5 @@
 package pl.put.poznan.sorting.logic;
 
-import java.util.Arrays;
 
 /**
  * Heap sort implementation.
@@ -21,7 +20,7 @@ public class HeapSort implements SortStrategy {
         int right = 2 * i + 2;
 
         if (left < n &&
-                directionSwitch * comp.compareTo(array[left], (array[largest]) )> 0)2
+                directionSwitch * comp.compareTo(array[left], (array[largest]) )> 0)
             largest = left;
 
         if (right < n &&
@@ -61,7 +60,7 @@ public class HeapSort implements SortStrategy {
                 break;
             }
 
-            heapify(data, i, 0, sortKey);
+            heapify(data, i, 0);
 
         }
         return data;

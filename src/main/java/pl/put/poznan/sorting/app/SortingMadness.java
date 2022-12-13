@@ -39,13 +39,13 @@ public class SortingMadness {
 
     public SortResult[] getResult() {
 
-        ArrayList<SortResult> results = new ArrayList<SortResult>();
+        ArrayList<SortResult> results = new ArrayList<>();
 
         for (String algorithm : algorithms) {
             SortContext context = new SortContext(wrapper.getSorter(algorithm));
             Timer timer = new Timer();
             timer.startMeasure();
-            Object[] sortedData = context.sort(input, key, iterations);
+            Object[] sortedData = context.sort(input, key, iterations, reverse);
             timer.stopMeasure();
 
             String time = timer.getElapsedTime("s");
