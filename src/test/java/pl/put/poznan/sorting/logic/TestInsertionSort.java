@@ -80,12 +80,40 @@ class TestInsertionSort
     }
 
     @Test
-    @DisplayName("String array sort test with specioal Signs")
+    @DisplayName("String array sort test with special Signs")
     void StringArrayTestSpecial()
     {
         String[] unsorted = {"hand", "haga",  "Haga", "an****", "anTENA", "war$zawa", "war.", "0x16", "0x8", "0X8", "war,", "\nada", " haga", "+haga"};
         String[] expected = {"\nada", " haga", "+haga", "0X8", "0x16", "0x8", "Haga", "an****", "anTENA", "haga", "hand", "war$zawa", "war,", "war."};
 
         Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted, null)));
+    }
+
+    @Test
+    @DisplayName("Iteration counter test")
+    void IterationBreakTest()
+    {
+        //TODO: verify arg passing to method of context sort
+        Integer[] unsorted = {3, 2, 5, 1, 4, 2, 5};
+        Integer[] expected = {1, 2, 2, 3, 4, 5, 5};
+
+        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,4)));
+
+        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,0)));
+
+        Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted,null,5000)));
+    }
+
+    @Test
+    @DisplayName("Reverse sort test")
+    void ReverseSortTest()
+    {
+        //TODO: verify arg passing to method of context sort
+        Integer[] unsorted = {3, 2, 5, 1, 4, 2, 5};
+        Integer[] expected = {5, 5, 4, 3, 2, 2, 1};
+
+        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,false)));
+
+        Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted,null,true)));
     }
 }
