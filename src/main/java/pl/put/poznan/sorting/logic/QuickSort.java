@@ -29,23 +29,23 @@ public class QuickSort implements SortStrategy
     }
 
 
-    void quickSorting(Object[] data, int low, int high, String sortKey)
+    void quickSorting(Object[] data, int low, int high, Comparator comp)
     {
-        Comparator comp = new Comparator(sortKey);
         if (low < high)
         {
 
             int pi = partition(data, low, high, comp);
 
-            quickSorting(data, low, pi-1, sortKey);
-            quickSorting(data, pi+1, high, sortKey);
+            quickSorting(data, low, pi-1, comp);
+            quickSorting(data, pi+1, high, comp);
         }
     }
 
     @Override
     public Object[] sort(Object[] data, String sortKey) {
+        Comparator comp = new Comparator(sortKey);
         int temp = data.length;
-        quickSorting(data, 0, temp, sortKey);
+        quickSorting(data, 0, temp, comp);
 
         return data;
     }
