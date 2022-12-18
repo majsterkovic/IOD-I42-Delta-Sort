@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 import pl.put.poznan.sorting.logic.Timer;
 
+/**
+ * Sorting application implementation.
+ *
+ */
+
 public class SortingMadness {
 
     private final String[] algorithms;
