@@ -5,6 +5,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.ToNumberPolicy;
 
+/**
+ * Request sort jason implementation for simple arrays.
+ *
+ */
+
+
 public class SortRequest {
 
     public SortRequest(Object[] data, String[] algorithms, boolean reverse, int iterations) {

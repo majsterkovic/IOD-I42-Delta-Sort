@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Sorting Context implementation.
+ *
+ */
+
 public class SortContext {
 
     private final SortStrategy strategy;

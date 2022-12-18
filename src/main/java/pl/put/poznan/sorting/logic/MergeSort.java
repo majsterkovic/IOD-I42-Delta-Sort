@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Merge sort implementation.
+ *
+ */
+
 public class MergeSort implements SortStrategy
 {
 

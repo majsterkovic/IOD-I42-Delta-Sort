@@ -17,6 +17,10 @@ import pl.put.poznan.sorting.models.SortResult;
 
 import java.util.Map;
 
+/**
+ * Sorting controller rest implementation for objects.
+ *
+ */
 
 @RestController
 @RequestMapping("/api/objectarray")

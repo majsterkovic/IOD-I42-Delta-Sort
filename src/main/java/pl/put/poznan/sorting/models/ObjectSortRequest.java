@@ -3,6 +3,11 @@ package pl.put.poznan.sorting.models;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+/**
+ * Request sort jason implementation for objects.
+ *
+ */
+
 public class ObjectSortRequest extends SortRequest {
 
     public ObjectSortRequest(Object[] data, String[] algorithms, String key, boolean reverse, int iterations) {

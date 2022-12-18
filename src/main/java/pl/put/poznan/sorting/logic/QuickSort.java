@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Quick sort implementation.
+ *
+ */
+
 public class QuickSort implements SortStrategy
 {
 

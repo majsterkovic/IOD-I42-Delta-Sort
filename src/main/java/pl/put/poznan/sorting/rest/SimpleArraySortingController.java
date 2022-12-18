@@ -15,6 +15,11 @@ import pl.put.poznan.sorting.models.SortResult;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Request to sort object jason implementation for simple arrays.
+ *
+ */
+
 @RestController
 @RequestMapping("/api/simplearray")
 public class SimpleArraySortingController {

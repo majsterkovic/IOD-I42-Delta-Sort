@@ -2,6 +2,10 @@ package pl.put.poznan.sorting.logic;
 
 import com.google.gson.internal.LinkedTreeMap;
 
+/**
+ * Object comparator implementation.
+ */
+
 public class Comparator {
 
     private String key;

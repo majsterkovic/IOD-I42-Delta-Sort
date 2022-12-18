@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Sorting wrapper implementation.
+ *
+ */
+
 public class SortingWrapper {
 
     public SortStrategy getSorter(String type) {

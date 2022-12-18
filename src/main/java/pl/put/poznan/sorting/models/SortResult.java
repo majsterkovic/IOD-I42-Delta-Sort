@@ -2,6 +2,11 @@ package pl.put.poznan.sorting.models;
 
 import com.google.gson.Gson;
 
+/**
+ * Sorting result jason implementation.
+ *
+ */
+
 public class SortResult {
 
     public SortResult(String algorithm, String time, Object[] data) {

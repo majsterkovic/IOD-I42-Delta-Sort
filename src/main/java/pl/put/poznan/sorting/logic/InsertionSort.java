@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Insertion sort implementation.
+ *
+ */
+
 public class InsertionSort implements SortStrategy {
 
     @Override

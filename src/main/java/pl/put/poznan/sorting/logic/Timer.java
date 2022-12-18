@@ -1,5 +1,10 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Measuring time implementation.
+ *
+ */
+
 public class Timer {
     private long startTime;
     private long endTime;
