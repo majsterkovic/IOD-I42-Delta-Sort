@@ -12,7 +12,6 @@ import pl.put.poznan.sorting.app.SortingMadness;
 import pl.put.poznan.sorting.models.SortRequest;
 import pl.put.poznan.sorting.models.SortResult;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -58,17 +57,21 @@ public class SimpleArraySortingController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", consumes = "application/json", produces = "application/json")
-    public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
+    // GET http://localhost:8080/api/simplearray/bubble,selection/true/0?data=1,2,3,4,5,6,7,8,9,10
+
+    @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", produces = "application/json")
+    public ResponseEntity<Object> get(@PathVariable("algorithms") String algorithms_string,
                                    @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
-                                   @RequestParam("data") Object[] data) {
+                                   @RequestParam("data") Object [] data) {
 
         System.out.println("Received new request.");
+
+        String[] algorithms = algorithms_string.split(",");
+
         SortingMadness madness = new SortingMadness(data, algorithms, reverse, iterations);
-        Map<String, Object> result = new HashMap<>();
-        result.put("result", madness.getResult());
-        return result;
+        SortResult[] result = madness.getResult();
+        return ResponseEntity.ok(result);
     }
 
 }
