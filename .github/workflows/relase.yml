@@ -6,7 +6,7 @@ on:
       - 'v*'
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -17,15 +17,25 @@ jobs:
 
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
-      - name: Upload jar
-        uses: actions/upload-artifact@v3
+      - name: Set Release version env variable
+        run: |
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: App
-          path: target/*.jar
-          if-no-files-found: error
-      - name: Upload javadoc
-        uses: actions/upload-artifact@v3
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          name: Documentation
-          path: target/site/
-          if-no-files-found: error
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/sorting-${{ env.RELEASE_VERSION }}.jar
+          asset_name: SortingMadness-${{ env.RELEASE_VERSION }}.jar
+          asset_content_type: application/zip
