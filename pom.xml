@@ -14,7 +14,7 @@
 
 	<groupId>pl.put.poznan</groupId>
 	<artifactId>sorting</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<properties>
 		<java.version>17</java.version>
