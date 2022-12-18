@@ -2,8 +2,9 @@ package pl.put.poznan.sorting.logic;
 
 public class MergeSort implements SortStrategy
 {
+    private Comparator comp;
 
-    void merge(Object[] data, int l, int m, int r, Comparator comp) {
+    void merge(Object[] data, int l, int m, int r) {
 
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -45,20 +46,20 @@ public class MergeSort implements SortStrategy
     }
 
 
-    void mergeSorting(Object[] data, int l, int r, Comparator comp) {
+    void mergeSorting(Object[] data, int l, int r) {
         if (l < r) {
             int m = l + (r - l) / 2;
 
-            mergeSorting(data, l, m, comp);
-            mergeSorting(data, m + 1, r, comp);
+            mergeSorting(data, l, m);
+            mergeSorting(data, m + 1, r);
 
-            merge(data, l, m, r, comp);
+            merge(data, l, m, r);
         }
     }
     @Override
     public Object[] sort(Object[] data, String sortKey) {
-        Comparator comp = new Comparator(sortKey);
-        mergeSorting(data, 0, data.length-1, comp);
+        comp = new Comparator(sortKey);
+        mergeSorting(data, 0, data.length-1);
 
         return data;
     }
