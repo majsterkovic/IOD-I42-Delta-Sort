@@ -1,7 +1,21 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Insertion sort implementation.
+ *
+ */
+
 public class InsertionSort implements SortStrategy {
 
+     /**
+     * Returns data sorted usunig insertion sort method.
+     * The method usues comparator class to compare objects with one another
+     * and overrides main sort method from SortStrategy.
+     *
+     * @param   data      data to sort (as an object)
+     * @param   sortKey   string sorting key used by comparator
+     * @return            data after insertion sort sorting
+     */
     @Override
     public Object[] sort(Object[] data, String sortKey) {
         Comparator comp = new Comparator(sortKey);
