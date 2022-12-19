@@ -13,12 +13,12 @@ public class SortRequest {
         this.reverse = reverse;
         this.iterations = iterations;
     }
-    
+
     public final Object[] data;
     public final String[] algorithms;
     public final boolean reverse;
     public final int iterations;
-    
+
     public static SortRequest fromJson(String json) throws JsonSyntaxException {
         return new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create().fromJson(json, SortRequest.class);
     }

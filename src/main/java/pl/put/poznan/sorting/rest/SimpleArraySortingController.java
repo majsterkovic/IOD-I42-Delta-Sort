@@ -1,13 +1,11 @@
 package pl.put.poznan.sorting.rest;
 
+import com.google.gson.JsonSyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.google.gson.JsonSyntaxException;
-
 import pl.put.poznan.sorting.app.SortingMadness;
 import pl.put.poznan.sorting.models.SortRequest;
 import pl.put.poznan.sorting.models.SortResult;
@@ -61,9 +59,9 @@ public class SimpleArraySortingController {
 
     @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", produces = "application/json")
     public ResponseEntity<Object> get(@PathVariable("algorithms") String algorithms_string,
-                                   @PathVariable("reverse") boolean reverse,
-                                   @PathVariable("iterations") int iterations,
-                                   @RequestParam("data") Object [] data) {
+                                      @PathVariable("reverse") boolean reverse,
+                                      @PathVariable("iterations") int iterations,
+                                      @RequestParam("data") Object[] data) {
 
         System.out.println("Received new request.");
 

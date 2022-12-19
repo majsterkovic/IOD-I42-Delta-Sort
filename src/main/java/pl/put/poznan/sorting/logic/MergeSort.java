@@ -1,7 +1,6 @@
 package pl.put.poznan.sorting.logic;
 
-public class MergeSort implements SortStrategy
-{
+public class MergeSort implements SortStrategy {
     private Comparator comp;
 
     void merge(Object[] data, int l, int m, int r) {
@@ -22,7 +21,7 @@ public class MergeSort implements SortStrategy
 
         int k = l;
         while (i < n1 && j < n2) {
-            if (comp.compareTo(L[i],R[j]) <= 0) {
+            if (comp.compareTo(L[i], R[j]) <= 0) {
                 data[k] = L[i];
                 i++;
             } else {
@@ -56,10 +55,11 @@ public class MergeSort implements SortStrategy
             merge(data, l, m, r);
         }
     }
+
     @Override
     public Object[] sort(Object[] data, String sortKey) {
         comp = new Comparator(sortKey);
-        mergeSorting(data, 0, data.length-1);
+        mergeSorting(data, 0, data.length - 1);
 
         return data;
     }

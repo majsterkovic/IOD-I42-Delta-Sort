@@ -2,11 +2,10 @@ package pl.put.poznan.sorting.app;
 
 import pl.put.poznan.sorting.logic.SortContext;
 import pl.put.poznan.sorting.logic.SortingWrapper;
+import pl.put.poznan.sorting.logic.Timer;
 import pl.put.poznan.sorting.models.SortResult;
 
 import java.util.ArrayList;
-
-import pl.put.poznan.sorting.logic.Timer;
 
 public class SortingMadness {
 
@@ -50,7 +49,7 @@ public class SortingMadness {
             timer.stopMeasure();
 
             String time = timer.getElapsedTime("s");
-            
+
             results.add(new SortResult(algorithm, time, sortedData));
 
         }

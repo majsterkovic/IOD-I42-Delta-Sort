@@ -2,7 +2,6 @@ package pl.put.poznan.sorting.logic;
 
 /**
  * Heap sort implementation.
- *
  */
 
 public class HeapSort implements SortStrategy {
@@ -15,12 +14,12 @@ public class HeapSort implements SortStrategy {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
 
-        if (  left < n &&
-                comp.compareTo(array[left], (array[largest]) )> 0)
+        if (left < n &&
+                comp.compareTo(array[left], (array[largest])) > 0)
             largest = left;
 
         if (right < n &&
-                comp.compareTo(array[right], (array[largest]) ) > 0)
+                comp.compareTo(array[right], (array[largest])) > 0)
             largest = right;
 
         if (largest != i) {

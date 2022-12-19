@@ -10,10 +10,10 @@ public class InsertionSort implements SortStrategy {
             Object key = data[i];
             int j = i - 1;
             while (j >= 0 && comp.compareTo(data[j], key) > 0) {
-                data[j+1] = data[j];
-                j = j -1;
+                data[j + 1] = data[j];
+                j = j - 1;
             }
-            data[j+1] = key;
+            data[j + 1] = key;
         }
         return data;
     }

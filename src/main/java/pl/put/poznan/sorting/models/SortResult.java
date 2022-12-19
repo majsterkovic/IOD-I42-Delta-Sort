@@ -9,7 +9,7 @@ public class SortResult {
         this.time = time;
         this.data = data;
     }
-    
+
     public static SortResult fromJson(String json) {
         return new Gson().fromJson(json, SortResult.class);
     }
