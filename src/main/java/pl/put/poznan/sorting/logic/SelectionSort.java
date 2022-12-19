@@ -12,6 +12,7 @@ public class SelectionSort implements SortStrategy {
         int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
         int directionSwitch = reverse ? -1 : 1;
+        boolean breakSort = (iterations > 0);
 
         for (int i = 0; i < data.length - 1; i++) {
             int jMin = i;
@@ -28,8 +29,7 @@ public class SelectionSort implements SortStrategy {
                 data[jMin] = temp;
             }
 
-            actualIteration++;
-            if (actualIteration >= iterations) {
+            if (breakSort && ++actualIteration >= iterations) {
                 break;
             }
         }

@@ -11,8 +11,10 @@ public class BubbleSort implements SortStrategy {
 
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         int actualIteration = 0;
+        boolean breakSort = (iterations > 0);
         Comparator comp = new Comparator(sortKey);
         int directionSwitch = reverse ? -1 : 1;
+
 
         Object temp;
         for (int i = 0; i < data.length; i++) {
@@ -25,8 +27,8 @@ public class BubbleSort implements SortStrategy {
                     data[j] = temp;
                 }
             }
-            actualIteration++;
-            if (actualIteration >= iterations) {
+
+            if (breakSort && ++actualIteration >= iterations) {
                 break;
             }
         }
