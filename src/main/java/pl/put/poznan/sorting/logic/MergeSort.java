@@ -55,12 +55,19 @@ public class MergeSort implements SortStrategy
             merge(data, l, m, r, comp);
         }
     }
+
+    //TODO: iterations counter and according break in the algorithm
+    //TODO: implement
     @Override
-    public Object[] sort(Object[] data, String sortKey) {
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         Comparator comp = new Comparator(sortKey);
         mergeSorting(data, 0, data.length-1, comp);
 
         return data;
     }
 
+    @Override
+    public String getName() {
+        return "MergeSort";
+    }
 }

@@ -41,12 +41,18 @@ public class QuickSort implements SortStrategy
         }
     }
 
+    //TODO: iterations counter and according break in the algorithm
     @Override
-    public Object[] sort(Object[] data, String sortKey) {
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         Comparator comp = new Comparator(sortKey);
         int temp = data.length;
         quickSorting(data, 0, temp, comp);
 
         return data;
+    }
+
+    @Override
+    public String getName() {
+        return "QuickSort";
     }
 }

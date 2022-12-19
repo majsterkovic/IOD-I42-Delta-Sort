@@ -39,9 +39,9 @@ public class HeapSort implements SortStrategy {
 
     @Override
 
-    public Object[] sort(Object[] data, String sortKey, int iterations, boolean ascending) {
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
 
-        directionSwitch = ascending ? 1 : -1;
+        directionSwitch = reverse ? -1 : 1;
         this.sortKey = sortKey;
 
         int n = data.length;

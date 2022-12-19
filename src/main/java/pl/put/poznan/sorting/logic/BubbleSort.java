@@ -9,10 +9,10 @@ public class BubbleSort implements SortStrategy {
 
     @Override
 
-    public Object[] sort(Object[] data, String sortKey, int iterations, boolean ascending) {
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
-        int directionSwitch = ascending ? 1 : -1;
+        int directionSwitch = reverse ? -1 : 1;
 
         Object temp;
         for (int i = 0; i < data.length; i++) {
