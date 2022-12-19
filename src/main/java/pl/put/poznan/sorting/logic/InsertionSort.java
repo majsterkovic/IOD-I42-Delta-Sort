@@ -4,10 +4,10 @@ public class InsertionSort implements SortStrategy {
 
     @Override
 
-    public Object[] sort(Object[] data, String sortKey, int iterations, boolean ascending) {
+    public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
-        int directionSwitch = ascending ? 1 : -1;
+        int directionSwitch = reverse ? -1 : 1;
 
         int n = data.length;
         for (int i = 1; i < n; i++) {
