@@ -7,6 +7,15 @@ package pl.put.poznan.sorting.logic;
 
 public class HeapSort implements SortStrategy {
 
+    /**
+     * Function to heapify a subtree rooted with node i which is an index in arr[].
+     * The method usues comparator class to compare objects with one another
+     *
+     * @param   array     data to sort (as an object)
+     * @param   sortKey   string sorting key used by comparator
+     * @param   n         size of the heap
+     *
+     */
     void heapify(Object[] array, int n, int i, String sortKey) {
 
         Comparator comp = new Comparator(sortKey);
@@ -32,7 +41,16 @@ public class HeapSort implements SortStrategy {
         }
     }
 
-
+    /**
+     * Returns data sorted usunig heap sort method.
+     * The method usues comparator class to compare objects with one another
+     * and overrides main sort method from SortStrategy.
+     *
+     * @param data      data to sort (as an object)
+     * @param sortKey   string sorting key used by comparator
+     * @return          data after heap sort sorting
+     *
+     */
     @Override
     public Object[] sort(Object[] data, String sortKey) {
         int n = data.length;
