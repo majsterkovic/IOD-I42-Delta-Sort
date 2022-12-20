@@ -14,9 +14,9 @@ public class HeapSort implements SortStrategy {
      * Function to heapify a subtree rooted with node i which is an index in arr[].
      * The method usues comparator class to compare objects with one another
      *
-     * @param   array     data to sort (as an object)
-     * @param   sortKey   string sorting key used by comparator
-     * @param   n         size of the heap
+     * @param   array   data to sort (as an object)
+     * @param   i       int, index of the current largest element
+     * @param   n       int, size of the heap
      *
      */
     void heapify(Object[] array, int n, int i) {
@@ -51,10 +51,11 @@ public class HeapSort implements SortStrategy {
      * The method usues comparator class to compare objects with one another
      * and overrides main sort method from SortStrategy.
      *
-     * @param data      data to sort (as an object)
-     * @param sortKey   string sorting key used by comparator
-     * @return          data after heap sort sorting
-     *
+     * @param   data        data to sort (as an object)
+     * @param   sortKey     string sorting key used by comparator
+     * @param   iterations  int number of iterations to perform (if 0 -> perform whole sorting operation)
+     * @param   reverse     boolean, used to determin sorting order
+     * @return              data after heap sort sorting
      */
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
 
@@ -83,6 +84,11 @@ public class HeapSort implements SortStrategy {
         return data;
     }
 
+    /**
+     * Get name of the sorting method.
+     *
+     * @return      String name of the sorting algorithm.
+     */
     @Override
     public String getName() {
         return "HeapSort";
