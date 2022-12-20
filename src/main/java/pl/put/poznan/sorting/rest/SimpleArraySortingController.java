@@ -69,16 +69,16 @@ public class SimpleArraySortingController {
     }
 
     @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", consumes = "application/json", produces = "application/json")
-    public Map<String, Object> get(@PathVariable("algorithms") String[] algorithms,
+    public ResponseEntity<Object> get(@PathVariable("algorithms") String algorithms_string,
                                    @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
                                    @RequestParam("data") Object[] data) {
 
         System.out.println("Received new request.");
+        String[] algorithms = algorithms_string.split(",");
         SortingMadness madness = new SortingMadness(data, algorithms, reverse, iterations);
-        Map<String, Object> result = new HashMap<>();
-        result.put("result", madness.getResult());
-        return result;
+        SortResult[] result = madness.getResult();
+        return ResponseEntity.ok(result);
     }
 
 }
