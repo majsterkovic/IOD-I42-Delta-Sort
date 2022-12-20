@@ -23,3 +23,15 @@ jobs:
         run: |
           rm -rf docs
           cp -rf target/site/apidocs/. docs
+          
+      - name: Commit files
+        run: |
+          git config --local user.name "javadoc"
+          git add ./docs
+          git commit -m "Updating the repository GitHub html pages in the docs folder"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
