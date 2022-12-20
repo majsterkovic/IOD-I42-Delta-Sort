@@ -10,7 +10,7 @@ public class SortingWrapper {
      * Creates new Class object (of chosen sorting algorithm.
      *
      * @param   type    type: String
-     * @return          null
+     * @return          new sort Object from chosen class or null if the selected type dosen't match any sort method 
      */
     public SortStrategy getSorter(String type) {
 
