@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import pl.put.poznan.sorting.logic.Timer;
 
+/**
+ * Sorting application implementation.
+ *
+ */
 public class SortingMadness {
 
     private final String[] algorithms;
@@ -18,7 +22,14 @@ public class SortingMadness {
 
     private final static SortingWrapper wrapper = new SortingWrapper();
 
-
+    /**
+     * Assigning given parameters to class fields.
+     *
+     * @param   data        type: Object[]
+     * @param   algorithms  type: String[]
+     * @param   reverse     type: boolean, to establish sorting order
+     * @param   iterations  type: int, to establish how many iterations to run
+     */
     public SortingMadness(Object[] data, String[] algorithms, boolean reverse, int iterations) {
 
         this.algorithms = algorithms;
@@ -28,6 +39,15 @@ public class SortingMadness {
         this.input = data;
     }
 
+    /**
+     * Assigning given parameters to class fields.
+     *
+     * @param   data        type: Object[]
+     * @param   algorithms  type: String[]
+     * @param   key         type: String, to establish sorting key
+     * @param   reverse     type: boolean, to establish sorting order
+     * @param   iterations  type: int, to establish how many iterations to run
+     */
     public SortingMadness(Object[] data, String[] algorithms, String key, boolean reverse, int iterations) {
 
         this.algorithms = algorithms;
@@ -37,6 +57,12 @@ public class SortingMadness {
         this.input = data;
     }
 
+    /**
+     * Getting sorting result.
+     * Method returnes sorted data in the appropriate format.
+     *
+     * @return
+     */
     public SortResult[] getResult() {
 
         ArrayList<SortResult> results = new ArrayList<SortResult>();
