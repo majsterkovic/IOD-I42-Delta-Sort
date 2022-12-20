@@ -1,6 +1,9 @@
 package pl.put.poznan.sorting.logic;
 
 import com.google.gson.internal.LinkedTreeMap;
+/**
+ * Object comparator implementation.
+ */
 
 public class Comparator {
 
@@ -9,7 +12,15 @@ public class Comparator {
     Comparator(String key) {
         this.key = key;
     }
-
+    /**
+     * Returns result of compering two objects.
+     * The method checks data type (intiger, float or string)
+     * and returns the information wchich is grater (or equal)
+     *
+     * @param   a   Object to compare to b
+     * @param   b   Object to compare to a
+     * @return      int, <0: a<b; =0: a=b; >0: a>b;
+     */
     public int compareTo(Object a, Object b) {
 
         if (a instanceof Integer) {

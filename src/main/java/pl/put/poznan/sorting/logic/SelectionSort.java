@@ -5,7 +5,15 @@ package pl.put.poznan.sorting.logic;
  */
 
 public class SelectionSort implements SortStrategy {
-
+    /**
+     * Returns data sorted usunig slection sort method.
+     * The method usues comparator class to compare objects with one another
+     * and overrides main sort method from SortStrategy.
+     *
+     * @param   data      data to sort (as an object)
+     * @param   sortKey   string sorting key used by comparator
+     * @return            data after selection sort sorting
+     */
     @Override
 
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
