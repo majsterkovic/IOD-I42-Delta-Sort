@@ -1,5 +1,6 @@
 package pl.put.poznan.sorting.app;
 
+import pl.put.poznan.sorting.logic.AutoSortSelect;
 import pl.put.poznan.sorting.logic.SortContext;
 import pl.put.poznan.sorting.logic.SortingWrapper;
 import pl.put.poznan.sorting.models.SortResult;
@@ -71,7 +72,16 @@ public class SortingMadness {
         ArrayList<SortResult> results = new ArrayList<>();
 
         for (String algorithm : algorithms) {
-            SortContext context = new SortContext(wrapper.getSorter(algorithm));
+            SortContext context;
+            String sortMethod;
+
+            if (algorithm.compareTo("auto") == 0) { 
+                sortMethod = AutoSortSelect.GetSortingAlgorithm(input, key);
+            }
+            else { 
+                sortMethod = algorithm; 
+            }
+            context = new SortContext(wrapper.getSorter(sortMethod));
             Timer timer = new Timer();
             timer.startMeasure();
             Object[] sortedData = context.sort(input, key, iterations, reverse);
@@ -79,7 +89,7 @@ public class SortingMadness {
 
             String time = timer.getElapsedTime("s");
             
-            results.add(new SortResult(algorithm, time, sortedData));
+            results.add(new SortResult(sortMethod, time, sortedData));
 
         }
         return results.toArray(new SortResult[0]);
