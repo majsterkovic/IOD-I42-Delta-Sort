@@ -95,7 +95,7 @@ public class MergeSort implements SortStrategy
         comp = new Comparator(sortKey);
         directionSwitch = reverse ? -1 : 1;
         int temp;
-        if (iterations == 0) {
+        if (iterations <= 0) {
             temp = Integer.MAX_VALUE;
         }
         else {
