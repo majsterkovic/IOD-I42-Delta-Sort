@@ -46,6 +46,7 @@ public class HeapSort implements SortStrategy {
 
         int n = data.length;
         int actualIteration = 0;
+        boolean breakSort = (iterations > 0);
 
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(data, n, i);
@@ -55,8 +56,7 @@ public class HeapSort implements SortStrategy {
             data[0] = data[i];
             data[i] = temp;
 
-            actualIteration++;
-            if (actualIteration >= iterations) {
+            if (breakSort && ++actualIteration >= iterations) {
                 break;
             }
 

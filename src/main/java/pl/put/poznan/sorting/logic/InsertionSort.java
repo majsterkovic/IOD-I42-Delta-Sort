@@ -8,6 +8,7 @@ public class InsertionSort implements SortStrategy {
         int actualIteration = 0;
         Comparator comp = new Comparator(sortKey);
         int directionSwitch = reverse ? -1 : 1;
+        boolean breakSort = (iterations > 0);
 
         int n = data.length;
         for (int i = 1; i < n; i++) {
@@ -19,8 +20,7 @@ public class InsertionSort implements SortStrategy {
             }
             data[j+1] = key;
 
-            actualIteration++;
-            if (actualIteration >= iterations) {
+            if (breakSort && ++actualIteration >= iterations) {
                 break;
             }
         }
