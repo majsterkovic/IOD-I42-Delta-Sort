@@ -15,7 +15,7 @@ import pl.put.poznan.sorting.models.SortResult;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * Request to sort object json implementation for simple arrays.
+ * Request to sort object JSON implementation for simple arrays.
  *
  */
 @RestController
@@ -25,10 +25,10 @@ public class SimpleArraySortingController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleArraySortingController.class);
     /**
      * Post implementation.
-     * Method updates the logger and after reading from jsno initializes sorting or
+     * Method updates the logger and after reading from JSON initializes sorting or
      * informs user about mistakes made while providing the data.
      *
-     * @param   requestData
+     * @param   requestData requested data
      * @return  result of sorting
      */
     @PostMapping(consumes = "application/json", produces = "application/json")

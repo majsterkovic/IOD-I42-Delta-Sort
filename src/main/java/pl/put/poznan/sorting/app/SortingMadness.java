@@ -62,7 +62,7 @@ public class SortingMadness {
 
     /**
      * Getting sorting result.
-     * Method returnes sorted data in the appropriate format.
+     * Method returns sorted data in the appropriate format.
      *
      * @return      sorted data
      */

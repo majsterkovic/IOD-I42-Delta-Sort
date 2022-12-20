@@ -7,15 +7,15 @@ package pl.put.poznan.sorting.logic;
 public class MergeSort implements SortStrategy
 {
     private Comparator comp;
-    int directionSwitch = 1;
+    private int directionSwitch = 1;
+
     /**
      * Merges two subarrays of data[]
-     * The method usues comparator class to compare objects with one another
-     * and overrides main sort method from SortStrategy.
+     * The method uses comparator class to compare objects.
      *
      * @param   data    data to sort (as an object)
-     * @param   l       int, left end of a firts subarray
-     * @param   m       int, right end of a fisrt subarray
+     * @param   l       int, left end of a first subarray
+     * @param   m       int, right end of a first subarray
      * @param   r       int, right end of a second subarray
      */
     void merge(Object[] data, int l, int m, int r) {
@@ -60,13 +60,13 @@ public class MergeSort implements SortStrategy
     }
 
     /**
-     * Sorts data usunig merge sort method.
+     * Sorts data using MergeSort method.
      * Recursion function to sort all the subarrays.
      *
      * @param   data    data to sort (as an object)
      * @param   l       int, left end of a subarray
      * @param   r       int, right end of a subarray
-     * @param   limit   int, number of iteretions to run
+     * @param   limit   int, number of iterations to run
      */
     void mergeSorting(Object[] data, int l, int r, int limit) {
         if (l < r && limit>0) {
@@ -80,15 +80,15 @@ public class MergeSort implements SortStrategy
     }
 
     /**
-     * Returns data sorted usunig merge sort method.
-     * The method usues comparator class to compare objects with one another
-     * and overrides main sort method from SortStrategy.
+     * Returns data sorted using MergeSort method.
+     * The method uses Comparator class to compare objects
+     * and overrides sort method from SortStrategy.
      *
-     * @param   data        data to sort (as an object)
-     * @param   sortKey     string sorting key used by comparator
-     * @param   iterations  int number of iterations to perform (if 0 -> perform whole sorting operation)
-     * @param   reverse     boolean, used to determin sorting order
-     * @return              data after merge sort sorting
+     * @param   data        data to be sorted
+     * @param   sortKey     sorting key used by Comparator to compare LinkedTreeMap objects
+     * @param   iterations  number of iterations of the algorithm to perform (whole algorithm if the number is 0 or less)
+     * @param   reverse     <code>true</code> if the result should be in descending order, <code>false</code> otherwise
+     * @return              array of data sorted with MergeSort algorithm.
      */
     @Override
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
@@ -110,7 +110,7 @@ public class MergeSort implements SortStrategy
     /**
      * Get name of the sorting method.
      *
-     * @return      String name of the sorting algorithm.
+     * @return      name of the sorting algorithm.
      */
     @Override
     public String getName() {

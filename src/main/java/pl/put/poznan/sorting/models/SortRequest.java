@@ -5,18 +5,17 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.ToNumberPolicy;
 /**
- * Request sort - json implementation for simple arrays.
+ * Request sort - JSON implementation for simple arrays.
  *
  */
 public class SortRequest {
     /**
      * Assigning arguments to class fields.
      *
-     * @param   data        type: Object[]
-     * @param   algorithms  type: String[]
-     * @param   key         type: String
-     * @param   reverse     type: boolean
-     * @param   iterations  type: int
+     * @param   data        data to be sorted
+     * @param   algorithms  array of the names of the algorithms to use to sort data
+     * @param   iterations  number of iterations of the algorithm to perform (whole algorithm if the number is 0 or less)
+     * @param   reverse     <code>true</code> if the result should be in descending order, <code>false</code> otherwise
      */
     public SortRequest(Object[] data, String[] algorithms, boolean reverse, int iterations) {
         this.data = data;
@@ -30,7 +29,7 @@ public class SortRequest {
     public final boolean reverse;
     public final int iterations;
     /**
-     * Reading a request from json.
+     * Reading a request from JSON.
      *
      * @param   json    type: String
      * @return          sort request
@@ -40,9 +39,9 @@ public class SortRequest {
         return new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create().fromJson(json, SortRequest.class);
     }
     /**
-     * Transorming to json.
+     * Transorming to JSON.
      *
-     * @return      object transformed to json format.
+     * @return      object transformed to JSON format.
      */
     public String toJson() {
         return new Gson().toJson(this);
