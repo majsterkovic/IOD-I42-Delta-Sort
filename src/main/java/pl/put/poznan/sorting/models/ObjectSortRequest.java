@@ -26,11 +26,11 @@ public class ObjectSortRequest extends SortRequest {
     public final String key;
 
     /**
-     * Creating json Object.
+     * Reading a request from json.
      *
      * @param   json    type: String
-     * @return          new json object
-     * @throws  JsonSyntaxException
+     * @return          sort request
+     * @throws JsonSyntaxException
      */
     public static ObjectSortRequest fromJson(String json) throws JsonSyntaxException {
         return new Gson().fromJson(json, ObjectSortRequest.class);
