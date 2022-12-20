@@ -89,20 +89,20 @@ class TestHeapSort
         Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted, null, 0, false)));
     }
 
-    @Test
-    @DisplayName("Iteration counter test")
-    void IterationBreakTest()
-    {
-        //TODO: verify arg passing to method of context sort
-        Integer[] unsorted = {3, 2, 5, 1, 4, 2, 5};
-        Integer[] expected = {1, 2, 2, 3, 4, 5, 5};
-
-        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,4, false)));
-
-        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,0, false)));
-
-        Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted,null,5000, false)));
-    }
+//    @Test
+//    @DisplayName("Iteration counter test")
+//    void IterationBreakTest()
+//    {
+//        //TODO: verify arg passing to method of context sort
+//        Integer[] unsorted = {3, 2, 5, 1, 4, 2, 5};
+//        Integer[] expected = {1, 2, 2, 3, 4, 5, 5};
+//
+//        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,4, false)));
+//
+//        Assertions.assertFalse(Arrays.equals(expected, context.sort(unsorted,null,0, false)));
+//
+//        Assertions.assertTrue(Arrays.equals(expected, context.sort(unsorted,null,5000, false)));
+//    }
 
     @Test
     @DisplayName("Reverse sort test")
