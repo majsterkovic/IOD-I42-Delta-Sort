@@ -1,8 +1,21 @@
 package pl.put.poznan.sorting.logic;
 
+/**
+ * Merge sort implementation.
+ *
+ */
 public class MergeSort implements SortStrategy
 {
-
+    /**
+     * Merges two subarrays of data[]
+     * The method usues comparator class to compare objects with one another
+     * and overrides main sort method from SortStrategy.
+     *
+     * @param   data    data to sort (as an object)
+     * @param   l       int, left end of a firts subarray
+     * @param   m       int, right end of a fisrt subarray
+     * @param   r       int, right end of a second subarray
+     */
     void merge(Object[] data, int l, int m, int r, Comparator comp) {
 
         int n1 = m - l + 1;
@@ -44,7 +57,14 @@ public class MergeSort implements SortStrategy
         }
     }
 
-
+    /**
+     * Sorts data usunig merge sort method.
+     * Recursion function to sort all the subarrays.
+     *
+     * @param   data    data to sort (as an object)
+     * @param   l       int, left end of a subarray
+     * @param   r       int, right end of a subarray
+     */
     void mergeSorting(Object[] data, int l, int r, Comparator comp) {
         if (l < r) {
             int m = l + (r - l) / 2;
@@ -56,8 +76,15 @@ public class MergeSort implements SortStrategy
         }
     }
 
-    //TODO: iterations counter and according break in the algorithm
-    //TODO: implement
+    /**
+     * Returns data sorted usunig merge sort method.
+     * The method usues comparator class to compare objects with one another
+     * and overrides main sort method from SortStrategy.
+     *
+     * @param   data      data to sort (as an object)
+     * @param   sortKey   string sorting key used by comparator
+     * @return            data after merge sort sorting
+     */
     @Override
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         Comparator comp = new Comparator(sortKey);
