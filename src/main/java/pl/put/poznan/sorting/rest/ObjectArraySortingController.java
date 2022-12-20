@@ -29,10 +29,10 @@ public class ObjectArraySortingController {
 
     /**
      * Post implementation.
-     * Method updates the logger and after reading from jsno initializes sorting or
+     * Method updates the logger and after reading from JSON initializes sorting or
      * informs user about mistakes made while providing the data
      *
-     * @param   requestData         type: Map<String, Object>
+     * @param   requestData         type: Map
      * @return                      result of sorting
      */
     @PostMapping(consumes = "application/json", produces = "application/json")
