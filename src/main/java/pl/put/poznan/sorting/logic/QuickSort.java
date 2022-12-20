@@ -82,7 +82,7 @@ public class QuickSort implements SortStrategy
         comp = new Comparator(sortKey);
         directionSwitch = reverse ? -1 : 1;
         int temp2;
-        if (iterations == 0) {
+        if (iterations <= 0) {
             temp2 = Integer.MAX_VALUE;
         }
         else {
