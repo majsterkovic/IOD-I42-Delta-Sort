@@ -11,11 +11,11 @@ public class ObjectSortRequest extends SortRequest {
     /**
      * Assigning arguments to class fields.
      *
-     * @param   data
-     * @param   algorithms
-     * @param   key
-     * @param   reverse
-     * @param   iterations
+     * @param   data        type: Object[]
+     * @param   algorithms  type: String[]
+     * @param   key         type: String
+     * @param   reverse     type: boolean
+     * @param   iterations  type: int
      */
     public ObjectSortRequest(Object[] data, String[] algorithms, String key, boolean reverse, int iterations) {
         super(data, algorithms, reverse, iterations);

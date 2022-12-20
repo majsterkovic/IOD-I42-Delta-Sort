@@ -20,9 +20,9 @@ public class SortContext {
     /**
      * Method to sort using a strategy
      *
-     * @param   data
-     * @param   sortKey
-     * @return  sort with strategy
+     * @param   data    type: Object[]
+     * @param   sortKey type: String
+     * @return          sort with strategy
      */
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
         return strategy.sort(data, sortKey, iterations, reverse);

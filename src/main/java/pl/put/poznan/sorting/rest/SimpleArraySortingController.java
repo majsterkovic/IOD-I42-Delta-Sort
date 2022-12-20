@@ -26,7 +26,7 @@ public class SimpleArraySortingController {
     /**
      * Post implementation.
      * Method updates the logger and after reading from jsno initializes sorting or
-     * informs user about mistakes made while providing the data
+     * informs user about mistakes made while providing the data.
      *
      * @param   requestData
      * @return  result of sorting

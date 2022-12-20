@@ -12,11 +12,11 @@ public class SortRequest {
     /**
      * Assigning arguments to class fields.
      *
-     * @param   data
-     * @param   algorithms
-     * @param   key
-     * @param   reverse
-     * @param   iterations
+     * @param   data        type: Object[]
+     * @param   algorithms  type: String[]
+     * @param   key         type: String
+     * @param   reverse     type: boolean
+     * @param   iterations  type: int
      */
     public SortRequest(Object[] data, String[] algorithms, boolean reverse, int iterations) {
         this.data = data;
