@@ -34,9 +34,9 @@ jobs:
           
       - name: Commit files
         run: |
-          git config --local user.name "javadoc"
+          git config --global user.name "javadoc"
           git add ./docs
-          git commit -m "Updating the repository GitHub html pages in the docs folder"
+          git commit -m "Wysłanie Javadoc przez Github Actions"
           
       - name: Push changes
         uses: ad-m/github-push-action@master
