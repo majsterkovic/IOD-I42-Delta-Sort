@@ -33,10 +33,10 @@ public class SortRequest {
     public final int iterations;
     
     /**
-     * Creating json Object.
+     * Reading a request from json.
      *
      * @param   json    type: String
-     * @return          new json object
+     * @return          sort request
      * @throws JsonSyntaxException
      */
     public static SortRequest fromJson(String json) throws JsonSyntaxException {
