@@ -14,7 +14,7 @@ import pl.put.poznan.sorting.models.SortResult;
 
 import java.util.Map;
 /**
- * Request to sort object json implementation for simple arrays.
+ * Request to sort object JSON implementation for simple arrays.
  *
  */
 @RestController
@@ -24,10 +24,10 @@ public class SimpleArraySortingController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleArraySortingController.class);
     /**
      * Post implementation.
-     * Method updates the logger and after reading from jsno initializes sorting or
-     * informs user about mistakes made while providing the data
+     * Method updates the logger and after reading from JSON initializes sorting or
+     * informs user about mistakes made while providing the data.
      *
-     * @param   requestData
+     * @param   requestData requested data
      * @return  result of sorting
      */
     @PostMapping(consumes = "application/json", produces = "application/json")
@@ -64,7 +64,6 @@ public class SimpleArraySortingController {
         }
 
         logger.debug("Initializing sorter.");
-
         SortingMadness madness = new SortingMadness(request.data, request.algorithms, request.reverse, request.iterations);
         SortResult[] result = madness.getResult();
 
@@ -73,13 +72,14 @@ public class SimpleArraySortingController {
     }
 
     @GetMapping(value = "/{algorithms}/{reverse}/{iterations}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> get(@PathVariable("algorithms") String[] algorithms,
+    public ResponseEntity<Object> get(@PathVariable("algorithms") String algorithms_string,
                                    @PathVariable("reverse") boolean reverse,
                                    @PathVariable("iterations") int iterations,
                                    @RequestParam("data") Object[] data) {
 
         System.out.println("Received new request.");
 
+        String[] algorithms = algorithms_string.split(",");
         if (algorithms == null || algorithms.length == 0) {
             logger.error("No algorithm provided.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");

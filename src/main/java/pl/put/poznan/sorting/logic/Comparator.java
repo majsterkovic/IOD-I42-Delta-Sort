@@ -13,13 +13,16 @@ public class Comparator {
         this.key = key;
     }
     /**
-     * Returns result of compering two objects.
-     * The method checks data type (intiger, float or string)
-     * and returns the information wchich is grater (or equal)
+     * Returns the result of comparing two objects.
+     * Supported data types: Integer, Long, Float,
+     * Double, String, LinkedTreeMap.
+     *
      *
      * @param   a   Object to compare to b
      * @param   b   Object to compare to a
-     * @return      int, <0: a<b; =0: a=b; >0: a>b;
+     * @return      less than 0 if a is less than b
+     *              0 if a is equal to b
+     *              more than 0 if a is more than b
      */
     public int compareTo(Object a, Object b) {
 

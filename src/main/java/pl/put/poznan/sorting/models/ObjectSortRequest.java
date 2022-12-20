@@ -3,7 +3,7 @@ package pl.put.poznan.sorting.models;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 /**
- * Request sort - json implementation for objects.
+ * Request sort - JSON implementation for objects.
  *
  */
 public class ObjectSortRequest extends SortRequest {
@@ -11,11 +11,11 @@ public class ObjectSortRequest extends SortRequest {
     /**
      * Assigning arguments to class fields.
      *
-     * @param   data
-     * @param   algorithms
-     * @param   key
-     * @param   reverse
-     * @param   iterations
+     * @param   data        type: Object[]
+     * @param   algorithms  type: String[]
+     * @param   key         type: String
+     * @param   reverse     type: boolean
+     * @param   iterations  type: int
      */
     public ObjectSortRequest(Object[] data, String[] algorithms, String key, boolean reverse, int iterations) {
         super(data, algorithms, reverse, iterations);
@@ -24,7 +24,7 @@ public class ObjectSortRequest extends SortRequest {
 
     public final String key;
     /**
-     * Reading a request from json.
+     * Reading a request from JSON.
      *
      * @param   json    type: String
      * @return          sort request
@@ -35,9 +35,9 @@ public class ObjectSortRequest extends SortRequest {
     }
 
     /**
-     * Transorming to json.
+     * Transorming to JSON.
      *
-     * @return      object transformed to json format.
+     * @return      object transformed to JSON format.
      */
     public String toJson() {
         return new Gson().toJson(this);

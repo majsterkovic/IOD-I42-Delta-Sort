@@ -30,11 +30,11 @@ public class ObjectArraySortingController {
 
     /**
      * Post implementation.
-     * Method updates the logger and after reading from jsno initializes sorting or
+     * Method updates the logger and after reading from JSON initializes sorting or
      * informs user about mistakes made while providing the data
      *
-     * @param   requestData
-     * @return  result of sorting
+     * @param   requestData         type: Map
+     * @return                      result of sorting
      */
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> post(@RequestBody Map<String, Object> requestData) {
@@ -73,7 +73,7 @@ public class ObjectArraySortingController {
                 logger.error("Type of value to compare is not supported.");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Type of value to compare is not supported.");
             }
-            if (object.get(request.key).getClass() != ((LinkedTreeMap<String, Object>)request.data[0]).get(request.key).getClass()) {
+            if (object.get(request.key).getClass() != ((LinkedTreeMap<?, ?>)request.data[0]).get(request.key).getClass()) {
                 logger.error("Data have different types.");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data have different types.");
             }
@@ -85,7 +85,6 @@ public class ObjectArraySortingController {
         }
 
         logger.debug("Initializing sorter.");
-
         SortingMadness madness = new SortingMadness(request.data, request.algorithms, request.key, request.reverse, request.iterations);
         SortResult[] result = madness.getResult();
         

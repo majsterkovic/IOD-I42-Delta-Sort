@@ -6,10 +6,11 @@ package pl.put.poznan.sorting.logic;
 public class SortingWrapper {
 
     /**
-     * Method to asaign adequate class according to chosen sort algorithm
+     * Method to assign adequate class according to chosen sort algorithm.
+     * Creates new Class object (of chosen sorting algorithm).
      *
-     * @param   type, string
-     * @return  new Class object (of chosen sorting algorithm)
+     * @param   type    type: String
+     * @return          new sort Object from chosen class or null if the selected type doesn't match any implemented sort method
      */
     public SortStrategy getSorter(String type) {
 

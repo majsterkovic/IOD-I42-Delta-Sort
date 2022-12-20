@@ -6,13 +6,15 @@ package pl.put.poznan.sorting.logic;
 
 public class SelectionSort implements SortStrategy {
     /**
-     * Returns data sorted usunig slection sort method.
-     * The method usues comparator class to compare objects with one another
-     * and overrides main sort method from SortStrategy.
+     * Returns data sorted using SelectionSort method.
+     * The method uses Comparator class to compare objects
+     * and overrides sort method from SortStrategy.
      *
-     * @param   data      data to sort (as an object)
-     * @param   sortKey   string sorting key used by comparator
-     * @return            data after selection sort sorting
+     * @param   data        data to be sorted
+     * @param   sortKey     sorting key used by Comparator to compare LinkedTreeMap objects
+     * @param   iterations  number of iterations of the algorithm to perform (whole algorithm if the number is 0 or less)
+     * @param   reverse     <code>true</code> if the result should be in descending order, <code>false</code> otherwise
+     * @return              array of data sorted with SelectionSort algorithm.
      */
     @Override
 
@@ -45,6 +47,11 @@ public class SelectionSort implements SortStrategy {
         return data;
     }
 
+    /**
+     * Get name of the sorting method.
+     *
+     * @return      name of the sorting algorithm.
+     */
     @Override
     public String getName() {
         return "SelectionSort";

@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,17 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Clean
         run: mvn clean
+
       - name: Compile
         run: mvn compile

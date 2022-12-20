@@ -9,9 +9,9 @@ public class SortResult {
     /**
      * Assigning arguments to class fields.
      *
-     * @param   algorithm
-     * @param   time
-     * @param   data
+     * @param   algorithm   type: String
+     * @param   time        type: String
+     * @param   data        type: Object[]
      */
     public SortResult(String algorithm, String time, Object[] data) {
         this.algorithm = algorithm;
@@ -21,8 +21,8 @@ public class SortResult {
     /**
      * Reading from json.
      *
-     * @param json
-     * @return
+     * @param   json    type: String
+     * @return          new sort result
      */
     public static SortResult fromJson(String json) {
         return new Gson().fromJson(json, SortResult.class);
