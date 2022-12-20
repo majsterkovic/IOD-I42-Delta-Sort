@@ -6,6 +6,7 @@ package pl.put.poznan.sorting.logic;
  */
 public class MergeSort implements SortStrategy
 {
+    private Comparator comp;
     /**
      * Merges two subarrays of data[]
      * The method usues comparator class to compare objects with one another
@@ -16,7 +17,7 @@ public class MergeSort implements SortStrategy
      * @param   m       int, right end of a fisrt subarray
      * @param   r       int, right end of a second subarray
      */
-    void merge(Object[] data, int l, int m, int r, Comparator comp) {
+    void merge(Object[] data, int l, int m, int r) {
 
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -25,9 +26,9 @@ public class MergeSort implements SortStrategy
         Object[] R = new Object[n2];
 
         for (int i = 0; i < n1; ++i)
-            L[i] = data[l + i];
+            System.arraycopy(data, l + i, L, i, 1);
         for (int j = 0; j < n2; ++j)
-            R[j] = data[m + 1 + j];
+            System.arraycopy(data, m + 1 + j, R, j, 1);
 
 
         int i = 0, j = 0;
@@ -65,14 +66,14 @@ public class MergeSort implements SortStrategy
      * @param   l       int, left end of a subarray
      * @param   r       int, right end of a subarray
      */
-    void mergeSorting(Object[] data, int l, int r, Comparator comp) {
+    void mergeSorting(Object[] data, int l, int r) {
         if (l < r) {
             int m = l + (r - l) / 2;
 
-            mergeSorting(data, l, m, comp);
-            mergeSorting(data, m + 1, r, comp);
+            mergeSorting(data, l, m);
+            mergeSorting(data, m + 1, r);
 
-            merge(data, l, m, r, comp);
+            merge(data, l, m, r);
         }
     }
 
@@ -87,8 +88,8 @@ public class MergeSort implements SortStrategy
      */
     @Override
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
-        Comparator comp = new Comparator(sortKey);
-        mergeSorting(data, 0, data.length-1, comp);
+        comp = new Comparator(sortKey);
+        mergeSorting(data, 0, data.length-1);
 
         return data;
     }

@@ -6,7 +6,7 @@ package pl.put.poznan.sorting.logic;
 
 public class QuickSort implements SortStrategy
 {
-
+    private Comparator comp;
     /**
      * Returns index of a pivot element.
      * Takes last element and uses it as a pivot -
@@ -20,7 +20,7 @@ public class QuickSort implements SortStrategy
      * @param   high    ending index
      * @return          index of a pivot element
      */
-    int partition(Object[] data, int low, int high, Comparator comp)
+    int partition(Object[] data, int low, int high)
     {
         Object pivot = data[high];
         int i = (low-1);
@@ -52,15 +52,15 @@ public class QuickSort implements SortStrategy
      * @param   low     starting index
      * @param   high    ending index
      */
-    void quickSorting(Object[] data, int low, int high, Comparator comp)
+    void quickSorting(Object[] data, int low, int high)
     {
         if (low < high)
         {
 
-            int pi = partition(data, low, high, comp);
+            int pi = partition(data, low, high);
 
-            quickSorting(data, low, pi-1, comp);
-            quickSorting(data, pi+1, high, comp);
+            quickSorting(data, low, pi-1);
+            quickSorting(data, pi+1, high);
         }
     }
 
@@ -75,9 +75,9 @@ public class QuickSort implements SortStrategy
      */
     @Override
     public Object[] sort(Object[] data, String sortKey, int iterations, boolean reverse) {
-        Comparator comp = new Comparator(sortKey);
+        comp = new Comparator(sortKey);
         int temp = data.length;
-        quickSorting(data, 0, temp, comp);
+        quickSorting(data, 0, temp-1);
 
         return data;
     }
