@@ -108,7 +108,6 @@ class TestMergeSort
     @DisplayName("Reverse sort test")
     void ReverseSortTest()
     {
-        //TODO: verify arg passing to method of context sort
         Integer[] unsorted = {3, 2, 5, 1, 4, 2, 5};
         Integer[] expected = {5, 5, 4, 3, 2, 2, 1};
 
