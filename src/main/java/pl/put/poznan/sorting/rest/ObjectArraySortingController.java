@@ -45,43 +45,43 @@ public class ObjectArraySortingController {
         try {
             request = ObjectSortRequest.fromJson(requestData.toString());
         } catch (JsonSyntaxException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong json syntax.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Wrong json syntax.\"}");
         }
 
         if (request.algorithms == null || request.algorithms.length == 0) {
             logger.error("No algorithm provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No algorithm provided.\"}");
         }
         
         if (request.key == null || request.key.length() == 0) {
             logger.error("Key not specified.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Key not specified.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Key not specified.\"}");
         }
 
         for (Object value : request.data) {
             logger.info(value.getClass().toString());
             if (!(value instanceof LinkedTreeMap)) {
                 logger.error("Wrong type of data.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong type of data.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Wrong type of data.\"}");
             }
             LinkedTreeMap<String, Object> object = (LinkedTreeMap)value;
             if (object.containsKey(request.key) == false) {
                 logger.error("Data don't contains key.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data don't contains key.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Data don't contains key.\"}");
             }
             if (!(object.get(request.key) instanceof String || object.get(request.key) instanceof Float || object.get(request.key) instanceof Double || object.get(request.key) instanceof Long || object.get(request.key) instanceof Integer)) {
                 logger.error("Type of value to compare is not supported.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Type of value to compare is not supported.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Type of value to compare is not supported.\"}");
             }
             if (object.get(request.key).getClass() != ((LinkedTreeMap<?, ?>)request.data[0]).get(request.key).getClass()) {
                 logger.error("Data have different types.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data have different types.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Data have different types.\"}");
             }
         }
 
         if (request.data == null || request.data.length == 0) {
             logger.error("No data provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No data provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No data provided.\"}");
         }
 
         logger.debug("Initializing sorter.");

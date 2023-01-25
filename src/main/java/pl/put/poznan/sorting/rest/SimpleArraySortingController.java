@@ -44,22 +44,22 @@ public class SimpleArraySortingController {
 
         if (request.algorithms == null || request.algorithms.length == 0) {
             logger.error("No algorithm provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No algorithm provided.\"}");
         }
 
         if (request.data == null || request.data.length == 0) {
             logger.error("No data provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No data provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No data provided.\"}");
         }
 
         for (Object value : request.data) {
             if (!(value instanceof String || value instanceof Float || value instanceof Double || value instanceof Integer || value instanceof Long)) {
                 logger.error("Type of value to compare is not supported.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Type of value to compare is not supported.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Type of value to compare is not supported.\"}");
             }
             if (value.getClass() != request.data[0].getClass()) {
                 logger.error("Data have different types.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data have different types.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Data have different types.\"}");
             }
         }
 
@@ -82,22 +82,22 @@ public class SimpleArraySortingController {
         String[] algorithms = algorithms_string.split(",");
         if (algorithms == null || algorithms.length == 0) {
             logger.error("No algorithm provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No algorithm provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No algorithm provided.\"}");
         }
 
         if (data == null || data.length == 0) {
             logger.error("No data provided.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No data provided.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"No data provided.\"}");
         }
 
         for (Object value : data) {
             if (!(value instanceof String || value instanceof Float || value instanceof Double || value instanceof Integer || value instanceof Long)) {
                 logger.error("Type of value to compare is not supported.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Type of value to compare is not supported.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Type of value to compare is not supported.\"}");
             }
             if (value.getClass() != data[0].getClass()) {
                 logger.error("Data have different types.");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data have different types.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\":\"Data have different types.\"}");
             }
         }
 
