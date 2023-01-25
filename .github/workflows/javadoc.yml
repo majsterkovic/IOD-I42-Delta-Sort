@@ -2,7 +2,7 @@ name: Javadoc
 
 on:
   push:
-    branches: [ "main-v1.5" ]
+    branches: [ "main-v2.0" ]
 
 jobs:
   javadoc:
