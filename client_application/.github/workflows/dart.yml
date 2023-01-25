@@ -20,13 +20,13 @@ jobs:
       - run: flutter --version
 
       - name: Install dependencies
-        run: cd client_application | flutter pub get
+        run: flutter pub get
   
       - name: Analyze project source
-        run: cd client_application | dart analyze
+        run: dart analyze
 
       - name: Build project for windows
-        run: cd client_application | flutter build windows --release
+        run: flutter build windows --release
 
       - name: Upload windows artifact (entire directory)
         uses: actions/upload-artifact@v2
